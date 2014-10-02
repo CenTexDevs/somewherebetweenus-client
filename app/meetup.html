@@ -1,0 +1,43 @@
+<div >
+
+<!--    <div id="title"></div>-->
+    <div>
+    <div id="logo"></div>
+    <div id="motto">
+        <span style="font-weight:bold;font-style:italic;font-size:24px">
+                The
+                <span style="color:#FA9E25;font-weight:bold;text-decoration:underline">closest</span>
+                spot between friends!
+        </span>
+    </div>
+    <div id="input_form">
+        
+        <div class="location_prompt">
+            <h4>I'm looking for 
+            <select id="venue_type" placeholder="what are you looking for?">
+                <option>coffee</option>
+                <option>restaurants</option>
+                <option>theaters</option>
+            </select>
+            between 
+            </h4>
+        </div>
+        <div class="address_div">
+            <input type="text" id="address1"  class="address"  value="" placeholder="(your address)">
+        </div>
+
+        <div class="location_prompt" ><h4>and</h4></div>
+        <div class="address_div" >
+            <input type="text" id="address2"  class="address"  value=""  placeholder="(friend's address)">
+        </div>
+        <div class="go_button_div">
+            <input data-ng-click="doMappings()"  type="button" id="showLocation" value="Go!"/>
+        </div>
+    </div>
+    </div>
+
+    <div style="display:block" id="map_canvas"></div>
+    
+    <script language="javascript">
+
+    </script>
