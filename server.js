@@ -17,7 +17,7 @@ var markerResults = {
     venues:[]
 }
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname + "/app"));
 
 
 app.get('/markers', function(req, res) {
