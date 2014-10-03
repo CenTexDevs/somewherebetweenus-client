@@ -18,6 +18,12 @@
 
         init();
 
+        $scope.venues = [
+            {name:'coffee'},
+            {name:'restaurants'},
+            {name:'theaters'}
+        ];
+        $scope.myVenue = $scope.venues[0]; // coffee default
 
         $scope.doMappings = function doMappings() {
 
@@ -44,14 +50,10 @@
 
             deleteOverlays();
 
-            var address1 = document.getElementById('address1').value;
-            var address2 = document.getElementById('address2').value;
-            var venueType = $('#venue_type').val();
-
             $http({
                 url: '/markers',
                 method: "GET",
-                params: {address1: address1, address2: address2, venueType: venueType}
+                params: {address1: $scope.address1, address2: $scope.address2, venueType: $scope.myVenue}
             }).success(successCallback);
         };
 
