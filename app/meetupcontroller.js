@@ -18,6 +18,7 @@
 
         init();
 
+
         $scope.doMappings = function doMappings() {
 
             function successCallback(data) {
