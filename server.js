@@ -1,4 +1,4 @@
-'use strict';
+
 var _ = require('request');
 
 var port = process.env.PORT || 3000;
