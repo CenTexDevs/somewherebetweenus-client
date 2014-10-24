@@ -15,7 +15,7 @@ var workflowStep = 0;
 var markerResults = {
     people:[],
     venues:[]
-}
+};
 
 app.use(express.static(__dirname));
 
@@ -26,7 +26,7 @@ app.get('/markers', function(req, res) {
         markerResults = {
             people:[],
             venues:[]
-        }
+        };
 
         workflow(req,res);
 });
@@ -43,10 +43,10 @@ function workflow(req,res)
 
     switch (step) {
         case 0:
-            getPersonLocation(req,res)
+            getPersonLocation(req,res);
             break;
         case 1:
-            getPersonLocation(req,res)
+            getPersonLocation(req,res);
             break;
         case 2:
             searchVenues(req,res);
@@ -80,7 +80,7 @@ function getPersonLocation(req,res) {
     }
     console.log("address:" + address);
     request(urlPrefix+address, function(error, response, body) {
-        var obj = eval("(" + body + ')');
+        var obj = JSON.parse(body);
         markerResults.people.push({coordinates:{latitude:(obj.results[0].geometry.location.lat),longitude:(obj.results[0].geometry.location.lng)}});
         workflow(req,res);
         return;
@@ -151,18 +151,18 @@ function geolocateVenues(req,res) {
         var address=markerResults.venues[i].address;
         var params = {index:i, request:req, response:res};
         request(urlPrefix+address, function(error, response, body) {
-            var obj = eval("(" + body + ')');
+            var obj = JSON.parse(body);
             markerResults.venues[this.index].coordinates = {latitude:(obj.results[0].geometry.location.lat),longitude:(obj.results[0].geometry.location.lng)};
             var continueWorkflow = true;
             for (var j = 0; j < markerResults.venues.length; j++){
-                if (markerResults.venues[j].coordinates == null || markerResults.venues[j].coordinates === null)
+                if (markerResults.venues[j].coordinates === null || markerResults.venues[j].coordinates === null)
                 {
                     console.log('stopping workflow'+this.index);
                     continueWorkflow = continueWorkflow && false;
                 }
             }
             console.log(continueWorkflow);
-            if (continueWorkflow == true)
+            if (continueWorkflow === true)
                 workflow(this.request,this.response);
 
             //all venues have coordinates
