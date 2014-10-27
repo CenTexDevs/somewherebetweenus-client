@@ -14,21 +14,23 @@
         
         <div class="location_prompt">
             <h4>I'm looking for 
-            <select id="venue_type" placeholder="what are you looking for?">
-                <option>coffee</option>
-                <option>restaurants</option>
-                <option>theaters</option>
+            <!--<select id="venue_type" placeholder="what are you looking for?" ng-model="venue">-->
+                <!--<option>coffee</option>-->
+                <!--<option>restaurants</option>-->
+                <!--<option>theaters</option>-->
+            <!--</select>-->
+            <select ng-options="venue.name for venue in venues" ng-model="myVenue" >
             </select>
             between 
             </h4>
         </div>
         <div class="address_div">
-            <input type="text" id="address1"  class="address"  value="" placeholder="(your address)">
+            <input type="text" id="address1"  class="address"  value="" placeholder="(your address)" ng-model="address1">
         </div>
 
         <div class="location_prompt" ><h4>and</h4></div>
         <div class="address_div" >
-            <input type="text" id="address2"  class="address"  value=""  placeholder="(friend's address)">
+            <input type="text" id="address2"  class="address"  value=""  placeholder="(friend's address)" ng-model="address2">
         </div>
         <div class="go_button_div">
             <input data-ng-click="doMappings()"  type="button" id="showLocation" value="Go!"/>
@@ -41,3 +43,4 @@
     <script language="javascript">
 
     </script>
+</div>

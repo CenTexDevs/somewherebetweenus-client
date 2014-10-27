@@ -7,7 +7,7 @@
                 .when('/',
                 {
                     controller: 'meetupController',
-                    templateUrl: 'meetup.html'
+                    templateUrl: 'app/meetup.html'
                 })
                 .otherwise({ redirectsTo: '/'});
         });
