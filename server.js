@@ -3,7 +3,7 @@ var _ = require('request');
 
 var port = process.env.PORT || 3000;
 var express = require('express');
-var app = express();
+var server = express();
 var yelp = require('yelp').createClient({
     consumer_key: 'f6TEXZpl19BGpCmvj4sFsA',
     consumer_secret: 'Tc5rr4kO49xrWjif6CGC-zDt5Q8',
@@ -17,10 +17,9 @@ var markerResults = {
     venues:[]
 };
 
-app.use(express.static(__dirname));
+server.use(express.static(__dirname + '/client'));
 
-
-app.get('/markers', function(req, res) {
+server.get('/markers', function(req, res) {
 
         workflowStep = 0;
         markerResults = {
@@ -171,6 +170,6 @@ function geolocateVenues(req,res) {
     }
 }
 
-app.listen(port, function () {
+server.listen(port, function () {
     console.log('Listening on port %d', port);
 });
