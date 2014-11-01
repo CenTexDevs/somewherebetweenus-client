@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('somewhereApp', ['ngRoute'])
-        .config(function ($routeProvider,$locationProvider) {
+        .config(function ($routeProvider) {
             $routeProvider
                 .when('/',
                 {
