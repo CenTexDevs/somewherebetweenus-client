@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - '0.10'
+before_script:
+  - 'npm install -g bower grunt-cli'
+after_success:
+ - 'curl -l http://somewherebetween.us:8080/update_client.php'
+
